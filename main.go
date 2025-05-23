@@ -111,7 +111,7 @@ func HandleEvent(event string) string {
 						if id == v.Host {
 							isHost = true
 						}
-						continue // don't re-add the leaving player
+						continue
 					}
 					newPlayers = append(newPlayers, p)
 				}
