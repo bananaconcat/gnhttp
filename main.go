@@ -118,7 +118,7 @@ func HandleEvent(event string) string {
 
 				if isHost {
 					if len(newPlayers) > 0 {
-						v.Host = GetParam(newPlayers[0], "id")
+						lobbies[i].Host = GetParam(newPlayers[0], "id")
 					} else {
 
 						newLobbies := []Lobby{}
@@ -145,8 +145,12 @@ func HandleEvent(event string) string {
 		}
 	} else if s[0] == "psync" { // psync LobbyId Username Health X Y Z
 		for i := range lobbies {
-			for i2 := range lobbies[i].Players {
-				lobbies[i].Players[i2] = "id=" + s[2] + " hp=" + s[3] + " x=" + s[4] + " y=" + s[5] + " z=" + s[6]
+			if lobbies[i].LobbyId == s[1] {
+				for i2 := range lobbies[i].Players {
+					if GetParam(lobbies[i].Players[i2], "id") == s[2] {
+						lobbies[i].Players[i2] = "id=" + s[2] + " hp=" + s[3] + " x=" + s[4] + " y=" + s[5] + " z=" + s[6]
+					}
+				}
 			}
 		}
 	}
