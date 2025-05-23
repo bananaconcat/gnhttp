@@ -50,7 +50,7 @@ public class NetworkManager : MonoBehaviour
     {
         StartCoroutine(SendRequest($"psync+{lobbyId}+{username}+{hp}+{pos.x}+{pos.y}+{pos.z}", (response) =>
         {
-            Debug.Log("Sent Player Data.")
+            Debug.Log("Sent Player Data.");
         }));
     }
 
